@@ -39,11 +39,11 @@ class LoginController extends Controller
 
     public function showLoginForm()
     {
-        return view('auth.spa.login-candidate');
+        return view('auth.app.login-candidate');
     }
 
     public function showRecruiterLoginForm()
     {
-        return view('auth.spa.login-recruiter');
+        return view('auth.app.login-recruiter');
     }
 }

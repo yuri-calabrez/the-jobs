@@ -1,4 +1,4 @@
-@extends('layouts.auth-spa')
+@extends('layouts.auth-app')
 
 @section('content')
     <img src="{{asset('images/logo.png')}}" alt="">

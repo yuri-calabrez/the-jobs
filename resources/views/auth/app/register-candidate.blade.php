@@ -1,14 +1,14 @@
-@extends('layouts.auth-spa')
+@extends('layouts.auth-app')
 
 @section('content')
     <img src="{{asset('images/logo.png')}}" alt="">
     <h1>Digite suas credenciais abaixo</h1>
 
     <form action="">
-        @include('auth.spa._form-register')
+        @include('auth.app._form-register')
         <div class="login-footer">
             <h6>Ou faça o cadastro com</h6>
-            @include('auth.spa._social')
+            @include('auth.app._social')
         </div>
     </form>
 @endsection

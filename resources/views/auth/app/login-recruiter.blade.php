@@ -1,11 +1,11 @@
-@extends('layouts.auth-spa')
+@extends('layouts.auth-app')
 
 @section('content')
     <img src="{{asset('images/logo.png')}}" alt="">
     <h1>Digite suas credenciais abaixo</h1>
 
     <form action="">
-        @include('auth.spa._form')
+        @include('auth.app._form')
     </form>
 @endsection
 

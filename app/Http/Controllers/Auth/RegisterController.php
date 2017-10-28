@@ -41,12 +41,12 @@ class RegisterController extends Controller
 
     public function showRegistrationForm()
     {
-        return view('auth.spa.register-candidate');
+        return view('auth.app.register-candidate');
     }
 
     public function showRecruiterRegistrationForm()
     {
-        return view('auth.spa.register-recruiter');
+        return view('auth.app.register-recruiter');
     }
 
     /**
