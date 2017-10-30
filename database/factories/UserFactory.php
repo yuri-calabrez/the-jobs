@@ -13,13 +13,38 @@ use Faker\Generator as Faker;
 |
 */
 
-$factory->define(App\User::class, function (Faker $faker) {
+$factory->define(App\Models\User::class, function (Faker $faker) {
     static $password;
 
     return [
         'name' => $faker->name,
         'email' => $faker->unique()->safeEmail,
         'password' => $password ?: $password = bcrypt('secret'),
+        'login_type' => 'default',
         'remember_token' => str_random(10),
+    ];
+});
+
+$factory->define(App\Models\Candidate::class, function (Faker $faker){
+    return [
+        'headline' => $faker->sentence,
+        'description' => $faker->paragraph,
+        'salary' => $faker->randomFloat(2, 1, 3),
+        'address' => $faker->address,
+        'phone' => $faker->phoneNumber,
+        'age' => rand(18, 50)
+    ];
+});
+
+$factory->define(App\Models\Company::class, function (Faker $faker){
+    return [
+        'name' => $faker->company,
+        'headline' => $faker->sentence,
+        'description' => $faker->paragraph,
+        'address' => $faker->address,
+        'phone' => $faker->phoneNumber,
+        'foundation' => $faker->date(),
+        'company_email' => $faker->unique()->companyEmail,
+        'company_detail' => $faker->paragraph
     ];
 });
