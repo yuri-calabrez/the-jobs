@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Models\Candidate;
+use App\Models\Company;
 use App\Models\User;
 use App\Http\Controllers\Controller;
+use Illuminate\Auth\Events\Registered;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
@@ -49,6 +53,37 @@ class RegisterController extends Controller
         return view('auth.app.register-recruiter');
     }
 
+    public function registerCandidate(Request $request)
+    {
+        $data = $request->all();
+        $data['login_type'] = 'default';
+
+        $this->validator($data)->validate();
+        event(new Registered($user = $this->create($data)));
+        $user->userable()->associate($this->createCandidate());
+        $user->save();
+        $this->guard()->login($user);
+
+        return $this->registered($request, $user)
+            ?: redirect($this->redirectPath());
+    }
+
+    public function registerRecruiter(Request $request)
+    {
+        $data = $request->all();
+        $data['login_type'] = 'default';
+
+        $this->validator($data)->validate();
+        event(new Registered($user = $this->create($data)));
+        $recruiter = Company::create([]);
+        $user->userable()->associate($recruiter);
+        $user->save();
+        $this->guard()->login($user);
+
+        return $this->registered($request, $user)
+            ?: redirect($this->redirectPath());
+    }
+
     /**
      * Get a validator for an incoming registration request.
      *
@@ -60,7 +95,7 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:6|confirmed',
+            'password' => 'required|string|min:6',
         ]);
     }
 
@@ -76,6 +111,24 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
+            'login_type' => $data['login_type']
         ]);
+    }
+
+    protected function registered(Request $request, $user)
+    {
+        if($user->userable instanceof \App\Models\Candidate) {
+            return redirect()->route('candidate.dashboard');
+        }
+
+        if($user->userable instanceof \App\Models\Company) {
+            return redirect()->route('recruiter.dashboard');
+        }
+    }
+
+    protected function createCandidate()
+    {
+        $candidate = Candidate::create([]);
+        return $candidate;
     }
 }

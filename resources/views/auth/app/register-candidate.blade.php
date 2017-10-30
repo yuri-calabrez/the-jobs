@@ -4,7 +4,7 @@
     <img src="{{asset('images/logo.png')}}" alt="">
     <h1>Digite suas credenciais abaixo</h1>
 
-    <form action="">
+    <form action="{{route('register.candidate')}}" method="POST">
         @include('auth.app._form-register')
         <div class="login-footer">
             <h6>Ou faça o cadastro com</h6>
