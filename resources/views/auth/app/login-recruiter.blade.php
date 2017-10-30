@@ -4,7 +4,7 @@
     <img src="{{asset('images/logo.png')}}" alt="">
     <h1>Digite suas credenciais abaixo</h1>
 
-    <form action="">
+    <form action="{{route('login')}}" method="POST">
         @include('auth.app._form')
     </form>
 @endsection

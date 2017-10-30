@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Candidate;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
@@ -19,6 +21,7 @@ class LoginController extends Controller
     */
 
     use AuthenticatesUsers;
+
 
     /**
      * Where to redirect users after login.
@@ -45,5 +48,17 @@ class LoginController extends Controller
     public function showRecruiterLoginForm()
     {
         return view('auth.app.login-recruiter');
+    }
+
+
+    protected function authenticated(Request $request, $user)
+    {
+        if($user->userable instanceof \App\Models\Candidate) {
+            return redirect()->route('candidate.dashboard');
+        }
+
+        if($user->userable instanceof \App\Models\Company) {
+            return redirect()->route('recruiter.dashboard');
+        }
     }
 }

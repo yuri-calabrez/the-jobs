@@ -1,7 +1,8 @@
+{{csrf_field()}}
 <div class="form-group">
     <div class="input-group">
         <span class="input-group-addon"><i class="ti-email"></i></span>
-        <input type="text" class="form-control" placeholder="E-mail">
+        <input type="text" name="email" class="form-control" placeholder="E-mail">
     </div>
 </div>
 
@@ -10,7 +11,7 @@
 <div class="form-group">
     <div class="input-group">
         <span class="input-group-addon"><i class="ti-unlock"></i></span>
-        <input type="password" class="form-control" placeholder="Senha">
+        <input type="password" name="password" class="form-control" placeholder="Senha">
     </div>
 </div>
 

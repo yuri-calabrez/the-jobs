@@ -48,11 +48,19 @@
                     <a href="#">Contato</a>
                 </li>
                 <li>
-                    <a href="#">Login</a>
-                    <ul>
-                        <li><a href="{{route('login.recruiter')}}" title="Recrutador">Recrutador</a></li>
-                        <li><a href="{{route('login.candidate')}}" title="Candidato">Candidato</a></li>
-                    </ul>
+                    @if(Auth::check())
+                    <a href="{{route('logout')}}" title="Logout"
+                       onclick="event.preventDefault();document.getElementById('formLogout').submit()">Logout</a>
+                    <form id="formLogout" method="POST" action="{{route('logout')}}">
+                        {{csrf_field()}}
+                    </form>
+                    @else
+                        <a href="#" title="Login">Login</a>
+                        <ul>
+                            <li><a href="{{route('login.recruiter')}}" title="Recrutador">Recrutador</a></li>
+                            <li><a href="{{route('login.candidate')}}" title="Candidato">Candidato</a></li>
+                        </ul>
+                    @endif
                 </li>
             </ul>
         </div>

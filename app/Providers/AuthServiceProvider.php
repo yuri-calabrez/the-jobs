@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Models\Candidate;
+use App\Models\Company;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
@@ -25,6 +27,12 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        //
+        \Gate::define('candidate', function($user){
+           return $user->userable instanceof Candidate;
+        });
+
+        \Gate::define('recruiter', function($user){
+            return $user->userable instanceof Company;
+        });
     }
 }
