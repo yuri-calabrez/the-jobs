@@ -6,11 +6,11 @@
 
     <form action="{{route('register.candidate')}}" method="POST">
         @include('auth.app._form-register')
-        <div class="login-footer">
-            <h6>Ou faça o cadastro com</h6>
-            @include('auth.app._social')
-        </div>
     </form>
+    <div class="login-footer">
+        <h6>Ou faça o cadastro com</h6>
+        @include('auth.app._social')
+    </div>
 @endsection
 
 @section('login-links')

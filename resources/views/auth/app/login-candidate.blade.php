@@ -6,11 +6,11 @@
 
     <form action="{{route('login')}}" method="POST">
         @include('auth.app._form')
-        <div class="login-footer">
-            <h6>Ou faça o login com</h6>
-            @include('auth.app._social')
-        </div>
     </form>
+    <div class="login-footer">
+        <h6>Ou faça o login com</h6>
+        @include('auth.app._social')
+    </div>
 @endsection
 
 @section('login-links')

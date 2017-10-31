@@ -40,3 +40,7 @@ Route::post('/password/reset', 'Auth\ResetPasswordController@reset')->name('pass
 Route::get('/password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
 
 Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
+
+//LOGIN SOCIAL
+Route::post('/login/social', 'Auth\LoginController@loginSocial')->name('login.social');
+Route::get('/login/callback', 'Auth\LoginController@loginSocialCallback')->name('login.callback');
