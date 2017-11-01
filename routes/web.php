@@ -14,6 +14,8 @@ Route::group(['prefix' => 'candidato'], function(){
 
     Route::group(['as' => 'candidate.', 'namespace' => 'Candidate', 'middleware' => ['auth', 'can:candidate']], function(){
         Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
+
+        Route::get('/perfil', 'ProfileController@index')->name('profile');
     });
 });
 

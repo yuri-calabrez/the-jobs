@@ -35,33 +35,37 @@
         <!-- Navigation menu -->
         <div class="pull-right">
             <ul class="nav-menu">
-                <li>
-                    <a class="active" href="#">Home</a>
-                </li>
-                <li>
-                    <a href="#">Sobre</a>
-                </li>
-                <li>
-                    <a href="#">Como funciona</a>
-                </li>
-                <li>
-                    <a href="#">Contato</a>
-                </li>
-                <li>
-                    @if(Auth::check())
-                    <a href="{{route('logout')}}" title="Logout"
-                       onclick="event.preventDefault();document.getElementById('formLogout').submit()">Logout</a>
-                    <form id="formLogout" method="POST" action="{{route('logout')}}">
-                        {{csrf_field()}}
-                    </form>
-                    @else
+                @if(Auth::check())
+                   @include('app._menuIn')
+                    <li>
+                        <a href="{{route('logout')}}" title="Logout"
+                           onclick="event.preventDefault();document.getElementById('formLogout').submit()">Logout</a>
+                        <form id="formLogout" method="POST" action="{{route('logout')}}">
+                            {{csrf_field()}}
+                        </form>
+                    </li>
+                @else
+                    <li>
+                        <a class="active" href="#">Home</a>
+                    </li>
+                    <li>
+                        <a href="#">Sobre</a>
+                    </li>
+                    <li>
+                        <a href="#">Como funciona</a>
+                    </li>
+                    <li>
+                        <a href="#">Contato</a>
+                    </li>
+                    <li>
                         <a href="#" title="Login">Login</a>
                         <ul>
                             <li><a href="{{route('login.recruiter')}}" title="Recrutador">Recrutador</a></li>
                             <li><a href="{{route('login.candidate')}}" title="Candidato">Candidato</a></li>
                         </ul>
-                    @endif
-                </li>
+                    </li>
+                @endif
+
             </ul>
         </div>
 

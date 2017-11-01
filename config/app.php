@@ -168,6 +168,7 @@ return [
          * Package Service Providers...
          */
         Laravel\Socialite\SocialiteServiceProvider::class,
+        Prettus\Repository\Providers\RepositoryServiceProvider::class,
 
         /*
          * Application Service Providers...
