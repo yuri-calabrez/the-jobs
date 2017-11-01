@@ -16170,3 +16170,12 @@ section.no-overlay:before {
   background-color: #333;
   color: #eceeef;
 }
+
+.alert-floating {
+  position: absolute;
+  width: 430px;
+  top: 0;
+  right: 0;
+  margin: 160px 5px 0 0;
+  z-index: 10;
+}

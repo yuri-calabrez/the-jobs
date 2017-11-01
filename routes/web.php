@@ -16,6 +16,7 @@ Route::group(['prefix' => 'candidato'], function(){
         Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 
         Route::get('/perfil', 'ProfileController@index')->name('profile');
+        Route::put('/perfil', 'ProfileController@updateProfile')->name('profile.update');
     });
 });
 

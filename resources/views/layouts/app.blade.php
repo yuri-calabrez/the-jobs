@@ -74,6 +74,7 @@
 </nav>
 <!-- END Navigation bar -->
 <main id="app">
+    @include('messages.flash-messages')
     @yield('content')
 </main>
 
