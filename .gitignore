@@ -12,3 +12,5 @@ yarn-error.log
 .env
 .phpstorm.meta.php
 _ide_helper.php
+public/uploads/*
+!public/uploads/.gitkeep

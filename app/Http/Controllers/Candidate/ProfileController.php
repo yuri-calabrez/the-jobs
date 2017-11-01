@@ -2,27 +2,27 @@
 
 namespace App\Http\Controllers\Candidate;
 
-use App\Contracts\Repositories\CandidateRepository;
 use App\Contracts\Repositories\UserRepository;
 use App\Http\Requests\Candidate\ProfileUpdateRequest;
+use App\Services\CandidateService;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class ProfileController extends Controller
 {
     /**
-     * @var CandidateRepository
-     */
-    private $repository;
-    /**
      * @var UserRepository
      */
     private $userRepository;
+    /**
+     * @var CandidateService
+     */
+    private $service;
 
-    public function __construct(CandidateRepository $repository, UserRepository $userRepository)
+    public function __construct(CandidateService $service, UserRepository $userRepository)
     {
-        $this->repository = $repository;
         $this->userRepository = $userRepository;
+        $this->service = $service;
     }
 
     public function index()
@@ -35,9 +35,7 @@ class ProfileController extends Controller
     public function updateProfile(ProfileUpdateRequest $request)
     {
         $id = \Auth::user()->userable->id;
-        $data = $request->all();
-        $candidate = $this->repository->update($data, $id);
-        //upload foto
+        $this->service->updateProfile($request->all(), $id);
         $request->session()->flash('success', 'Perfil atualizado com sucesso!');
         return redirect()->route('candidate.profile');
     }

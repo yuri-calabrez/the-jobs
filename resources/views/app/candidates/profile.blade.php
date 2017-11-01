@@ -10,8 +10,14 @@
             <div class="row">
                 <div class="col-xs-12 col-sm-4">
                     <div class="form-group">
-                        <input type="file" class="dropify" data-default-file="/images/avatar.jpg">
+                        <input type="file" name="cover" class="dropify"
+                               data-default-file="{{$candidate->cover ? $candidate->cover : '/images/avatar.jpg'}}">
                         <span class="help-block">Imagem PNG ou JPG</span>
+                        @if ($errors->has('cover'))
+                            <span class="help-block">
+                                <strong>{{ $errors->first('cover') }}</strong>
+                            </span>
+                        @endif
                     </div>
                 </div>
 
@@ -34,9 +40,7 @@
 
                     <div class="form-group{{ $errors->has('description') ? ' has-error' : '' }}">
                         <textarea class="form-control" required name="description" rows="3"
-                                  placeholder="Uma breve descrição sobre você">
-                            {{old('description', $candidate->description)}}
-                        </textarea>
+                                  placeholder="Uma breve descrição sobre você">{{old('description', $candidate->description)}}</textarea>
                         @if ($errors->has('description'))
                             <span class="help-block">
                                 <strong>{{ $errors->first('description') }}</strong>
@@ -120,7 +124,8 @@
                         <div class="form-group col-xs-12 col-sm-6">
                             <div class="input-group input-group-sm">
                                 <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-                                <input type="text" value="{{$user->email}}" disabled class="form-control" placeholder="E-mail">
+                                <input type="text" value="{{$user->email}}" disabled class="form-control"
+                                       placeholder="E-mail">
                             </div>
                         </div>
 
