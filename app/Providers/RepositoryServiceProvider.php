@@ -2,8 +2,12 @@
 
 namespace App\Providers;
 
-use App\Contracts\Repositories\{CandidateRepository, UserRepository};
-use App\Repositories\{CandidateRepositoryEloquent, UserRepositoryEloquent};
+use App\Contracts\Repositories\{
+    CandidateRepository, EducationRepository, UserRepository
+};
+use App\Repositories\{
+    CandidateRepositoryEloquent, EducationRepositoryEloquent, UserRepositoryEloquent
+};
 use Illuminate\Support\ServiceProvider;
 
 class RepositoryServiceProvider extends ServiceProvider
@@ -27,5 +31,6 @@ class RepositoryServiceProvider extends ServiceProvider
     {
         $this->app->bind(UserRepository::class, UserRepositoryEloquent::class);
         $this->app->bind(CandidateRepository::class, CandidateRepositoryEloquent::class);
+        $this->app->bind(EducationRepository::class, EducationRepositoryEloquent::class);
     }
 }

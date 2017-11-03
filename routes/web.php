@@ -17,6 +17,10 @@ Route::group(['prefix' => 'candidato'], function(){
 
         Route::get('/perfil', 'ProfileController@index')->name('profile');
         Route::put('/perfil', 'ProfileController@updateProfile')->name('profile.update');
+
+        Route::get('/curriculo', 'ResumeController@show')->name('resume.show');
+
+        Route::resource('educacoes', 'EducationsController', ['except' => 'show']);
     });
 });
 

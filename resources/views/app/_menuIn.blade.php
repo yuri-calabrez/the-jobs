@@ -6,7 +6,7 @@
     <a href="{{route('candidate.profile')}}">Meu perfil</a>
 </li>
 <li>
-    <a href="#">Curriculo</a>
+    <a href="{{route('candidate.resume.show')}}" title="Curriculo">Curriculo</a>
 </li>
 <li>
     <a href="#">Dados cadastrais</a>

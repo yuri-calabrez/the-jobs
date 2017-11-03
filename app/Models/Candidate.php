@@ -14,4 +14,9 @@ class Candidate extends Model
     {
         return $this->morphTo(User::class, 'userable');
     }
+
+    public function educations()
+    {
+        return $this->hasMany(Education::class);
+    }
 }
