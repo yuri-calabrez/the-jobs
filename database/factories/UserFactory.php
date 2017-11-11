@@ -63,3 +63,17 @@ $factory->define(\App\Models\Education::class, function (Faker $faker){
        'end' => rand(1970, 2030),
    ];
 });
+
+$factory->define(\App\Models\WorkExperience::class, function (Faker $faker){
+    $repository = app(\App\Contracts\Repositories\CandidateRepository::class);
+    $candidate_id = $repository->all()->random()->id;
+
+    return [
+        'candidate_id' => $candidate_id,
+        'company_name' => $faker->company,
+        'position' => $faker->word,
+        'start' => rand(1970, 2030),
+        'end' => rand(1970, 2030),
+        'job_description' => $faker->paragraph(5)
+    ];
+});
