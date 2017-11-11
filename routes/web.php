@@ -21,6 +21,7 @@ Route::group(['prefix' => 'candidato'], function(){
         Route::get('/curriculo', 'ResumeController@show')->name('resume.show');
 
         Route::resource('educacoes', 'EducationsController', ['except' => 'show']);
+        Route::resource('experiencias', 'WorkExperiencesController', ['except' => ['show', 'create']]);
     });
 });
 
