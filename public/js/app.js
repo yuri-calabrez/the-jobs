@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 38);
+/******/ 	return __webpack_require__(__webpack_require__.s = 40);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -40160,9 +40160,9 @@ license Apache-2.0
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex__ = __webpack_require__(46);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__candidate_education__ = __webpack_require__(47);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__candidate_workExperience__ = __webpack_require__(48);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex__ = __webpack_require__(48);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__candidate_education__ = __webpack_require__(49);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__candidate_workExperience__ = __webpack_require__(50);
 
 
 
@@ -40193,29 +40193,79 @@ var location = window.location;
 
 /***/ }),
 /* 38 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-__webpack_require__(39);
-__webpack_require__(54);
-module.exports = __webpack_require__(55);
-
+"use strict";
+/* harmony default export */ __webpack_exports__["a"] = ({
+    methods: {
+        clearData: function clearData() {
+            this.data = {};
+        },
+        closeForm: function closeForm() {
+            this.visible = false;
+            this.clearData();
+        }
+    }
+});
 
 /***/ }),
 /* 39 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return error; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return afterSave; });
+var error = function error(responseError) {
+    var messageError = 'Não foi possível realizar a operação. Tente novamente';
+    switch (responseError.response.status) {
+        case 422:
+            messageError = 'Informações inválidas! Verifique os dados novamente.';
+            break;
+    }
+    new PNotify({
+        title: 'Mensagem de erro',
+        text: messageError,
+        styling: 'brighttheme',
+        type: 'error'
+    });
+};
+
+var afterSave = function afterSave() {
+    new PNotify({
+        title: 'Informação',
+        text: 'Dados salvos com sucesso!',
+        styling: 'brighttheme',
+        type: 'success'
+    });
+};
+
+
+
+/***/ }),
+/* 40 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(40);
+__webpack_require__(41);
+__webpack_require__(56);
+module.exports = __webpack_require__(57);
+
+
+/***/ }),
+/* 41 */
+/***/ (function(module, exports, __webpack_require__) {
+
+__webpack_require__(42);
 
 window.Vue = __webpack_require__(32);
 
-Vue.component('resume-component', __webpack_require__(42));
+Vue.component('resume-component', __webpack_require__(44));
 
 var app = new Vue({
     el: '#app'
 });
 
 /***/ }),
-/* 40 */
+/* 42 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
@@ -40225,7 +40275,7 @@ try {
     //window.$ = window.jQuery = require('jquery');
     //require('bootstrap-sass');
     window.PNotify = __webpack_require__(35);
-    __webpack_require__(41);
+    __webpack_require__(43);
 } catch (e) {}
 
 window.axios = __webpack_require__(13);
@@ -40250,7 +40300,7 @@ if (token) {
 // });
 
 /***/ }),
-/* 41 */
+/* 43 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;// Buttons
@@ -40423,15 +40473,15 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 
 
 /***/ }),
-/* 42 */
+/* 44 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(9)
 /* script */
-var __vue_script__ = __webpack_require__(43)
+var __vue_script__ = __webpack_require__(45)
 /* template */
-var __vue_template__ = __webpack_require__(53)
+var __vue_template__ = __webpack_require__(55)
 /* template functional */
   var __vue_template_functional__ = false
 /* styles */
@@ -40471,14 +40521,14 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 43 */
+/* 45 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__EducationComponent_vue__ = __webpack_require__(44);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__EducationComponent_vue__ = __webpack_require__(46);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__EducationComponent_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__EducationComponent_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__WorkExperienceComponent_vue__ = __webpack_require__(50);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__WorkExperienceComponent_vue__ = __webpack_require__(52);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__WorkExperienceComponent_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__WorkExperienceComponent_vue__);
 //
 //
@@ -40517,15 +40567,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 44 */
+/* 46 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(9)
 /* script */
-var __vue_script__ = __webpack_require__(45)
+var __vue_script__ = __webpack_require__(47)
 /* template */
-var __vue_template__ = __webpack_require__(49)
+var __vue_template__ = __webpack_require__(51)
 /* template functional */
   var __vue_template_functional__ = false
 /* styles */
@@ -40565,13 +40615,14 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 45 */
+/* 47 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__store_store__ = __webpack_require__(36);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mixins_resume_mixin__ = __webpack_require__(68);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mixins_resume_mixin__ = __webpack_require__(38);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__messages_error_and_after_save__ = __webpack_require__(39);
 //
 //
 //
@@ -40660,6 +40711,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+
 
 
 
@@ -40695,40 +40747,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         save: function save() {
             var _this = this;
 
-            var error = function error(responseError) {
-                var messageError = 'Não foi possível realizara operação. Tente novamente';
-                switch (responseError.response.status) {
-                    case 422:
-                        messageError = 'Informações inválidas! Verifique os dados novamente.';
-                        break;
-                }
-                new PNotify({
-                    title: 'Mensagem de erro',
-                    text: messageError,
-                    styling: 'brighttheme',
-                    type: 'error'
-                });
-            };
-            var afterSave = function afterSave() {
-                new PNotify({
-                    title: 'Informação',
-                    text: 'Formação Acadêmica salva com sucesso!',
-                    styling: 'brighttheme',
-                    type: 'success'
-                });
-            };
             if (!this.data.id) {
                 __WEBPACK_IMPORTED_MODULE_0__store_store__["a" /* default */].dispatch('Education/storeEducation', this.data).then(function () {
                     __WEBPACK_IMPORTED_MODULE_0__store_store__["a" /* default */].dispatch('Education/getEducations');
                     _this.visible = false;
                     _this.clearData();
-                }).then(afterSave, error);
+                }).then(__WEBPACK_IMPORTED_MODULE_2__messages_error_and_after_save__["a" /* afterSave */], __WEBPACK_IMPORTED_MODULE_2__messages_error_and_after_save__["b" /* error */]);
             } else {
                 __WEBPACK_IMPORTED_MODULE_0__store_store__["a" /* default */].dispatch('Education/updateEducation', this.data).then(function () {
                     __WEBPACK_IMPORTED_MODULE_0__store_store__["a" /* default */].dispatch('Education/getEducations');
                     _this.visible = false;
                     _this.clearData();
-                }).then(afterSave, error);
+                }).then(__WEBPACK_IMPORTED_MODULE_2__messages_error_and_after_save__["a" /* afterSave */], __WEBPACK_IMPORTED_MODULE_2__messages_error_and_after_save__["b" /* error */]);
             }
         },
         edit: function edit(educationId) {
@@ -40756,7 +40786,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 46 */
+/* 48 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -41701,7 +41731,7 @@ var index_esm = {
 
 
 /***/ }),
-/* 47 */
+/* 49 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -41762,7 +41792,7 @@ var actions = {
 });
 
 /***/ }),
-/* 48 */
+/* 50 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -41823,7 +41853,7 @@ var actions = {
 });
 
 /***/ }),
-/* 49 */
+/* 51 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -42171,15 +42201,15 @@ if (false) {
 }
 
 /***/ }),
-/* 50 */
+/* 52 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(9)
 /* script */
-var __vue_script__ = __webpack_require__(51)
+var __vue_script__ = __webpack_require__(53)
 /* template */
-var __vue_template__ = __webpack_require__(52)
+var __vue_template__ = __webpack_require__(54)
 /* template functional */
   var __vue_template_functional__ = false
 /* styles */
@@ -42219,13 +42249,14 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 51 */
+/* 53 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__store_store__ = __webpack_require__(36);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mixins_resume_mixin__ = __webpack_require__(68);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mixins_resume_mixin__ = __webpack_require__(38);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__messages_error_and_after_save__ = __webpack_require__(39);
 //
 //
 //
@@ -42356,7 +42387,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     __WEBPACK_IMPORTED_MODULE_0__store_store__["a" /* default */].dispatch('WorkExperience/getWorkExperiences');
                     _this.visible = false;
                     _this.clearData();
-                });
+                }).then(__WEBPACK_IMPORTED_MODULE_2__messages_error_and_after_save__["a" /* afterSave */], __WEBPACK_IMPORTED_MODULE_2__messages_error_and_after_save__["b" /* error */]);
             }
         },
         edit: function edit(workExperienceId) {
@@ -42371,13 +42402,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         remove: function remove(workExperienceId) {
             if (confirm("Deseja realmente remover essa Experiencia?")) {
                 __WEBPACK_IMPORTED_MODULE_0__store_store__["a" /* default */].dispatch('WorkExperience/deleteWorkExperience', workExperienceId);
+                new PNotify({
+                    title: 'Informação',
+                    text: 'Experiencia profisional removida com sucesso!',
+                    styling: 'brighttheme',
+                    type: 'success'
+                });
             }
         }
     }
 });
 
 /***/ }),
-/* 52 */
+/* 54 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -42457,7 +42494,9 @@ var render = function() {
         _vm.workExperiences.length === 0
           ? _c("div", { staticClass: "col-xs-12" }, [
               _c("div", { staticClass: "alert alert-info text-center" }, [
-                _vm._v("Ainda não existem Trabalhos cadastrados!")
+                _vm._v(
+                  "Ola! Você ainda não possui nenhuma experiência profissional cadastrada. Comece agora mesmo!"
+                )
               ])
             ])
           : _vm._e()
@@ -42692,7 +42731,7 @@ var render = function() {
               }
             }
           },
-          [_vm._v("Add experience")]
+          [_vm._v("Nova experiência profissional")]
         )
       ])
     ])
@@ -42709,7 +42748,7 @@ if (false) {
 }
 
 /***/ }),
-/* 53 */
+/* 55 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -42764,45 +42803,16 @@ if (false) {
 }
 
 /***/ }),
-/* 54 */
+/* 56 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
-/* 55 */
+/* 57 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 56 */,
-/* 57 */,
-/* 58 */,
-/* 59 */,
-/* 60 */,
-/* 61 */,
-/* 62 */,
-/* 63 */,
-/* 64 */,
-/* 65 */,
-/* 66 */,
-/* 67 */,
-/* 68 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony default export */ __webpack_exports__["a"] = ({
-    methods: {
-        clearData: function clearData() {
-            this.data = {};
-        },
-        closeForm: function closeForm() {
-            this.visible = false;
-            this.clearData();
-        }
-    }
-});
 
 /***/ })
 /******/ ]);

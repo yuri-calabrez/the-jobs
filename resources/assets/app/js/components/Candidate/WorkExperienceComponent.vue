@@ -26,7 +26,7 @@
             </div>
 
             <div class="col-xs-12" v-if="workExperiences.length === 0">
-                <div class="alert alert-info text-center">Ainda não existem Trabalhos cadastrados!</div>
+                <div class="alert alert-info text-center">Ola! Você ainda não possui nenhuma experiência profissional cadastrada. Comece agora mesmo!</div>
             </div>
         </div>
         <div class="row">
@@ -76,7 +76,7 @@
             </div>
             <div class="col-xs-12 text-center">
                 <br>
-                <button class="btn btn-primary" @click="visible = true">Add experience</button>
+                <button class="btn btn-primary" @click="visible = true">Nova experiência profissional</button>
             </div>
         </div>
     </div>
@@ -85,7 +85,7 @@
 <script>
     import store from '../../store/store';
     import resumeMixin from '../../mixins/resume.mixin';
-
+    import {error, afterSave} from '../../messages/error-and-after-save';
     export default {
         mixins: [resumeMixin],
         data() {
@@ -126,6 +126,7 @@
                         this.visible = false;
                         this.clearData();
                     })
+                    .then(afterSave, error);
                 }
             },
             edit(workExperienceId) {
@@ -140,6 +141,12 @@
             remove(workExperienceId) {
                 if(confirm("Deseja realmente remover essa Experiencia?")) {
                     store.dispatch('WorkExperience/deleteWorkExperience', workExperienceId);
+                    new PNotify({
+                        title: 'Informação',
+                        text: 'Experiencia profisional removida com sucesso!',
+                        styling: 'brighttheme',
+                        type: 'success'
+                    });
                 }
             }
         }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Candidate;
 
 use App\Contracts\Repositories\EducationRepository;
+use App\Criteria\FindByCandidateCriteria;
 use App\Http\Requests\Candidate\EducationRequest;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -17,6 +18,7 @@ class EducationsController extends Controller
     public function __construct(EducationRepository $repository)
     {
         $this->repository = $repository;
+        $this->repository->pushCriteria(new FindByCandidateCriteria());
     }
 
     public function index()

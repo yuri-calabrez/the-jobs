@@ -89,6 +89,7 @@
 <script>
     import store from '../../store/store';
     import resumeMixin from '../../mixins/resume.mixin';
+    import {error, afterSave} from '../../messages/error-and-after-save';
     export default {
         mixins: [resumeMixin],
         data() {
@@ -118,28 +119,6 @@
         },
         methods: {
             save() {
-                let error = (responseError) => {
-                    let messageError = 'Não foi possível realizara operação. Tente novamente';
-                    switch (responseError.response.status) {
-                        case 422:
-                            messageError = 'Informações inválidas! Verifique os dados novamente.';
-                            break;
-                    }
-                    new PNotify({
-                        title: 'Mensagem de erro',
-                        text: messageError,
-                        styling: 'brighttheme',
-                        type: 'error'
-                    });
-                };
-                let afterSave = () => {
-                    new PNotify({
-                        title: 'Informação',
-                        text: 'Formação Acadêmica salva com sucesso!',
-                        styling: 'brighttheme',
-                        type: 'success'
-                    });
-                };
                 if (!this.data.id) {
                     store.dispatch('Education/storeEducation', this.data)
                         .then(() => {

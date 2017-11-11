@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Candidate;
 
 use App\Contracts\Repositories\WorkExperienceRepository;
+use App\Criteria\FindByCandidateCriteria;
 use App\Http\Requests\Candidate\WorkExperienceRequest;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -17,6 +18,7 @@ class WorkExperiencesController extends Controller
     public function __construct(WorkExperienceRepository $repository)
     {
         $this->repository = $repository;
+        $this->repository->pushCriteria(new FindByCandidateCriteria());
     }
 
     /**
