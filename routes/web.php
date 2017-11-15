@@ -22,6 +22,7 @@ Route::group(['prefix' => 'candidato'], function(){
 
         Route::resource('educacoes', 'EducationsController', ['except' => 'show']);
         Route::resource('experiencias', 'WorkExperiencesController', ['except' => ['show', 'create']]);
+        Route::resource('skills', 'SkillsController', ['except' => ['edit', 'create']]);
     });
 });
 

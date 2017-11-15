@@ -21,16 +21,28 @@
                 <work-experience-component></work-experience-component>
             </div>
         </section>
+
+        <section>
+            <div class="container">
+                <header class="section-header">
+                    <h2>Skills</h2>
+                </header>
+
+                <skill-component></skill-component>
+            </div>
+        </section>
     </div>
 </template>
 
 <script>
-    import EducationComponent from './EducationComponent.vue';
-    import WorkExperienceComponent from './WorkExperienceComponent.vue';
+    import EducationComponent from './EducationComponent';
+    import WorkExperienceComponent from './WorkExperienceComponent';
+    import SkillComponent from './SkillComponent';
     export default {
         components: {
             'education-component': EducationComponent,
-            'work-experience-component': WorkExperienceComponent
+            'work-experience-component': WorkExperienceComponent,
+            'skill-component': SkillComponent
         }
     }
 </script>

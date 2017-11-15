@@ -77,3 +77,14 @@ $factory->define(\App\Models\WorkExperience::class, function (Faker $faker){
         'job_description' => $faker->paragraph(5)
     ];
 });
+
+$factory->define(\App\Models\Skill::class, function (Faker $faker){
+    $repository = app(\App\Contracts\Repositories\CandidateRepository::class);
+    $candidate_id = $repository->all()->random()->id;
+
+    return [
+        'name' => $faker->word,
+        'percentage' => rand(1, 100),
+        'candidate_id' => $candidate_id
+    ];
+});

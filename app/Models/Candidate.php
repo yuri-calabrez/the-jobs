@@ -19,4 +19,14 @@ class Candidate extends Model
     {
         return $this->hasMany(Education::class);
     }
+
+    public function workExperiences()
+    {
+        return $this->hasMany(WorkExperience::class);
+    }
+
+    public function skills()
+    {
+        return $this->hasMany(Skill::class);
+    }
 }
