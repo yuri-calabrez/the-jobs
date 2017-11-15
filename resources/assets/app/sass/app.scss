@@ -50,3 +50,16 @@
   opacity: 1;
   transition: 500ms;
 }
+
+.resume-date-container{
+  position: relative;
+  margin-bottom: 25px;
+}
+
+.resume-date-container .message-date-absolute{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  margin-left: 5px;
+  margin-bottom: -70px;
+}

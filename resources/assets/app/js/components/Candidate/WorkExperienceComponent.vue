@@ -36,9 +36,12 @@
                         <form @submit.prevent="save()">
                             <div class="row">
                                 <div class="col-xs-12 col-sm-12">
-                                    <div class="form-group">
-                                        <input type="text" name="company_name" v-model="data.company_name"
+                                    <div class="form-group" :class="errors.has('company_name') ? 'has-error' : ''">
+                                        <input v-validate="'required'" type="text" name="company_name" v-model="data.company_name"
                                                class="form-control" placeholder="Nome" required>
+                                        <span v-show="errors.has('company_name')" class="help-block">
+                                            <p class="text-danger">{{ errors.first('company_name') }}</p>
+                                        </span>
                                     </div>
 
                                     <div class="form-group">
@@ -49,8 +52,13 @@
                                     <div class="form-group">
                                         <div class="input-group">
                                             <span class="input-group-addon">Date from</span>
-                                            <input type="text" name="start" v-model="data.start"
-                                                   class="form-control" placeholder="e.g. 2012" required>
+                                                <div class="resume-date-container">
+                                                    <input type="text" name="start" v-model="data.start"
+                                                           class="form-control" placeholder="e.g. 2012" required>
+                                                    <small class="text-danger message-date-absolute"></small>
+                                                </div>
+
+
                                             <span class="input-group-addon">Date to</span>
                                             <input type="text" name="end" v-model="data.end"
                                                    class="form-control" placeholder="e.g. 2016">
@@ -58,10 +66,10 @@
                                     </div>
                                 </div>
 
-                                <div class="col-xs-12">
+                                <div class="col-xs-12" style="margin-top: 10px;">
                                     <div class="form-group">
                                     <textarea name="job_descripion" v-model="data.job_description"
-                                              class="summernote-editor"></textarea>
+                                              class="form-control" rows="5"></textarea>
                                     </div>
                                 </div>
 
