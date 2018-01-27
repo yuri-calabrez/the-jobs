@@ -44,24 +44,37 @@
                                         </span>
                                     </div>
 
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" name="position" v-model="data.position"
+                                    <div class="form-group" :class="errors.has('position') ? 'has-error' : ''">
+                                        <input v-validate="'required'" type="text" class="form-control"
+                                               name="position" v-model="data.position"
                                                placeholder="Cargo, e.g. UI/UX " required>
+                                        <span v-show="errors.has('position')" class="help-block">
+                                            <p class="text-danger">{{ errors.first('position') }}</p>
+                                        </span>
                                     </div>
 
                                     <div class="form-group">
                                         <div class="input-group">
-                                            <span class="input-group-addon">Date from</span>
-                                                <div class="resume-date-container">
-                                                    <input type="text" name="start" v-model="data.start"
-                                                           class="form-control" placeholder="e.g. 2012" required>
-                                                    <small class="text-danger message-date-absolute"></small>
-                                                </div>
+                                            <span class="input-group-addon">Inicio</span>
+                                            <div class="resume-date-container" :class="errors.has('start') ? 'has-error' : ''">
+                                                <input v-validate="'required|numeric'" type="text" name="start"
+                                                       v-model="data.start"
+                                                       class="form-control" placeholder="e.g. 2012" required>
+                                                <small v-if="errors.has('start')" class="text-danger message-date-absolute">
+                                                    {{ errors.first('start') }}
+                                                </small>
+                                            </div>
 
-
-                                            <span class="input-group-addon">Date to</span>
-                                            <input type="text" name="end" v-model="data.end"
-                                                   class="form-control" placeholder="e.g. 2016">
+                                            <span class="input-group-addon">Fim</span>
+                                            <div class="resume-date-container" :class="errors.has('end') ? 'has-error' : ''">
+                                                <input v-validate="'required|numeric'" type="text"
+                                                       name="end" v-model="data.end"
+                                                       class="form-control" placeholder="e.g. 2012" required>
+                                                <small class="text-danger message-date-absolute"></small>
+                                                <small v-if="errors.has('end')" class="text-danger message-date-absolute">
+                                                    {{ errors.first('end') }}
+                                                </small>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

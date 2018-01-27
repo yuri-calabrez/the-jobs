@@ -1,9 +1,10 @@
-import VeeValidate from 'vee-validate';
+import VeeValidate, {Validator} from 'vee-validate';
+import VeeValidateMessageBr from 'vee-validate/dist/locale/pt_BR'
 require('./bootstrap');
 
 window.Vue = require('vue');
-
-Vue.use(VeeValidate);
+Validator.localize('pt_BR', VeeValidateMessageBr);
+Vue.use(VeeValidate, {locale: 'pt_BR'});
 
 Vue.component('resume-component', require('./components/Candidate/ResumeComponent.vue'));
 

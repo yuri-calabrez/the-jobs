@@ -11,7 +11,7 @@
                         <div class="row">
                             <div class="col-xs-12 col-sm-6">
                                 <div class="form-group">
-                                    <input type="text" name="name" v-model="skill.name" :value="skill.name" required
+                                    <input type="text" name="name" v-model="skill.name"  required
                                            class="form-control" placeholder="Nome, e.g. HTML">
                                 </div>
                             </div>
@@ -21,7 +21,7 @@
                                 <div class="form-group">
                                     <div class="input-group">
                                         <input type="number" required maxlength="3"
-                                               :value="skill.percentage" v-model="skill.percentage"
+                                               v-model="skill.percentage"
                                                name="percentage" class="form-control"
                                                placeholder="Proficiência, e.g. 90">
                                         <span class="input-group-addon">%</span>
@@ -115,8 +115,8 @@
                     name: skill.name,
                     percentage: skill.percentage
                 };
-              store.dispatch('Skill/updateSkill', {data: data, id: skill.id})
-                  .then(afterSave, error);
+                store.dispatch('Skill/updateSkill', {data: data, id: skill.id})
+                    .then(afterSave, error);
             },
             remove(id) {
                 store.dispatch('Skill/removeSkill', id).then(() => {

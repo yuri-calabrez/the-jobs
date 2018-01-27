@@ -37,30 +37,52 @@
                     <form @submit.prevent="save()">
                         <div class="row">
                             <div class="col-xs-12 col-sm-12">
-                                <div class="form-group">
-                                    <input type="text" v-model="data.degree"
-                                           name="degree" class="form-control" placeholder="Graduação, e.g. Bachelor">
-
+                                <div class="form-group" :class="errors.has('degree') ? 'has-error' : ''">
+                                    <input v-validate="'required'" type="text" name="degree" v-model="data.degree"
+                                           class="form-control" placeholder="Graduação" required>
+                                    <span v-show="errors.has('degree')" class="help-block">
+                                            <p class="text-danger">{{ errors.first('degree') }}</p>
+                                        </span>
                                 </div>
-
-                                <div class="form-group">
-                                    <input type="text" v-model="data.major" name="major" class="form-control"
+                                <div class="form-group" :class="errors.has('major') ? 'has-error' : ''">
+                                    <input v-validate="'required'" type="text" v-model="data.major"
+                                           class="form-control" name="major"
                                            placeholder="Curso, e.g. Ciências da computação">
+                                    <span v-if="errors.has('major')" class="help-block">
+                                        <p class="text-danger">{{ errors.first('major') }}</p>
+                                    </span>
                                 </div>
-                                <div class="form-group">
-                                    <input type="text" v-model="data.institute" name="institute"
+                                <div class="form-group" :class="errors.has('institute') ? 'has-error' : ''">
+                                    <input v-validate="'required'" type="text" v-model="data.institute" name="institute"
                                            class="form-control"
                                            placeholder="Nome do instituto, e.x. Fiap">
+                                    <span v-if="errors.has('institute')" class="help-block">
+                                        <p class="text-danger">{{ errors.first('institute') }}</p>
+                                    </span>
                                 </div>
 
                                 <div class="form-group">
                                     <div class="input-group">
                                         <span class="input-group-addon">Inicio</span>
-                                        <input type="text" v-model="data.start" name="start"
-                                               class="form-control" placeholder="ex. 2012">
+                                        <div class="resume-date-container" :class="errors.has('start') ? 'has-error' : ''">
+                                            <input v-validate="'required|numeric'" type="text" name="start"
+                                                   v-model="data.start"
+                                                   class="form-control" placeholder="e.g. 2012" required>
+                                            <small v-if="errors.has('start')" class="text-danger message-date-absolute">
+                                                {{ errors.first('start') }}
+                                            </small>
+                                        </div>
+
                                         <span class="input-group-addon">Fim</span>
-                                        <input type="text" v-model="data.end" name="end" class="form-control"
-                                               placeholder="ex. 2016">
+                                        <div class="resume-date-container" :class="errors.has('end') ? 'has-error' : ''">
+                                            <input v-validate="'required|numeric'" type="text"
+                                                   name="end" v-model="data.end"
+                                                   class="form-control" placeholder="e.g. 2012" required>
+                                            <small class="text-danger message-date-absolute"></small>
+                                            <small v-if="errors.has('end')" class="text-danger message-date-absolute">
+                                                {{ errors.first('end') }}
+                                            </small>
+                                        </div>
                                     </div>
                                 </div>
 
@@ -102,8 +124,7 @@
                     start: '',
                     end: '',
                     description: ''
-                },
-                errors: []
+                }
             }
         },
         mounted() {
